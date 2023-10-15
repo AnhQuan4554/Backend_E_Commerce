@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Connection } from 'typeorm';
+import { CreateUserDto } from './dto/user.dto';
 
 @Controller('users')
 export class UserController {
@@ -20,5 +21,10 @@ export class UserController {
     } else {
       return 'Lỗi kết nối cơ sở dữ liệu.';
     }
+  }
+  @Post('creat-user')
+  async creatUser(@Body() createUserDto: CreateUserDto) {
+    const res = this.userService.creatUser(createUserDto);
+    return res;
   }
 }
