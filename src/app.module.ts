@@ -5,6 +5,10 @@ import { UserModule } from './users/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './users/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CategoriesModule } from './categories/categories.module';
+import { ProductModule } from './product/product.module';
+import { OrdersModule } from './orders/orders.module';
+import { Product } from './product/product.entity';
 
 @Module({
   imports: [
@@ -17,9 +21,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: '100502',
       database: 'e_commerce',
-      entities: [User],
+      entities: [User, Product],
       synchronize: true,
     }),
+    CategoriesModule,
+    ProductModule,
+    OrdersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
