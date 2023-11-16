@@ -1,23 +1,21 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column } from 'typeorm';
 
 @Entity()
 export class CreatProductDto {
   @IsString()
   @IsNotEmpty()
   @Column({ unique: true })
-  name: string;
-
+  title: string;
+  @Column()
+  image: string;
   @IsNotEmpty()
   @IsNumber()
   @Column()
   price: number;
 
-  // @Column()
-  // picture: string;
-
-  // @Column()
-  // description: string;
+  @Column()
+  description: string;
   @IsString()
   @IsNotEmpty()
   @Column()

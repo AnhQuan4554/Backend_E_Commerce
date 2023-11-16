@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Connection } from 'typeorm';
 import { CreatProductDto } from './dto/product.dto';
 import { ProductService } from './product.service';
@@ -11,8 +11,16 @@ export class ProductController {
   ) {}
 
   @Get()
-  getHello(): string {
-    return 'okokUsers';
+  async getAllProduct() {
+    const res = await this.productService.findAll();
+    console.log('product list', res);
+    return res;
+  }
+  @Get(':id')
+  async getDetail(@Param('id') id: number) {
+    const res = await this.productService.findOne(id);
+    console.log('product list', res);
+    return res;
   }
   @Post('creat-product')
   async creatProduct(@Body() createProduct: CreatProductDto) {

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,6 +10,11 @@ import { CategoriesModule } from './categories/categories.module';
 import { ProductModule } from './product/product.module';
 import { OrdersModule } from './orders/orders.module';
 import { Product } from './product/product.entity';
+import { Order } from './orders/orders.entity';
+import { Carts } from './orders/cart.entity';
+import { NotifycationModule } from './notifycation/notifycation.module';
+import { Notifycation } from './notifycation/entities/notifycation.entity';
+import { NotifycationService } from './notifycation/notifycation.service';
 
 @Module({
   imports: [
@@ -21,12 +27,13 @@ import { Product } from './product/product.entity';
       username: 'root',
       password: '100502',
       database: 'e_commerce',
-      entities: [User, Product],
+      entities: [User, Product, Order, Carts, Notifycation],
       synchronize: true,
     }),
     CategoriesModule,
     ProductModule,
     OrdersModule,
+    NotifycationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
