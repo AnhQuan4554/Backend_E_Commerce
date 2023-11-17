@@ -14,6 +14,4 @@ export class Notifycation {
   price: number;
   @Column()
   qty: number;
-  @Column()
-  dateTime: string;
 }

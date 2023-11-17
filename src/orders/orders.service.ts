@@ -17,13 +17,13 @@ export class OrdersService {
   ) {}
   async getAllOrder() {
     const res = await this.OrderRepository.find();
-    console.log('get Success');
+    console.log('get ALl Order Success');
     // console.log('all orderss', res);
     return res;
   }
   async getAllCarts() {
     const res = await this.CartsRepository.find();
-    console.log('get Success');
+    console.log('get All Carts Success');
     return res;
   }
   async creatOrder(creatOrder: CreateOrderDto) {
@@ -33,6 +33,11 @@ export class OrdersService {
   }
   async creatCarts(creatCart: CreateCartDto) {
     const result = await this.CartsRepository.save(creatCart);
+    // console.log('result when creat Cart', result);
+    return result;
+  }
+  async deleteCarts(id: number) {
+    const result = await this.CartsRepository.delete({ id });
     // console.log('result when creat Cart', result);
     return result;
   }

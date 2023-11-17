@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/creatOrder.dto';
 import { CreateCartDto } from './dto/creatCarts.dto';
@@ -28,7 +28,7 @@ export class OrdersController {
     const day = String(today.getDate()).padStart(2, '0');
     const month = String(today.getMonth() + 1).padStart(2, '0'); // Lưu ý: Tháng bắt đầu từ 0
     const year = today.getFullYear();
-    const currentDate = `${day}/${month}/${year}`;
+    const currentDate = `${month}/${day}/${year}`;
     console.log(currentDate);
     console.log(createOrderDto);
     const res = await this.ordersService.creatOrder(createOrderDto);
@@ -41,5 +41,9 @@ export class OrdersController {
   @Post('creat-cart')
   async creatCart(@Body() createCartDto: CreateCartDto) {
     const res = this.ordersService.creatCarts(createCartDto);
+  }
+  @Delete('delete-cart/:id')
+  async deleteCart(@Param('id') id: number) {
+    const res = this.ordersService.deleteCarts(id);
   }
 }
