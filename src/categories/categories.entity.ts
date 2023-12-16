@@ -1,21 +1,20 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class Categories_Entity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   name: string;
 
   @Column()
-  email: string;
+  created_at: Date;
+
   @Column()
-  password: string;
-  @Column()
-  address: string;
-  @Column()
-  phone: string;
+  updated_at: Date;
+  // @Column()
+  // password: string;
 
   // @OneToMany(type => Order, order => order.user)
   // orders: Order[];
