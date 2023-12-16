@@ -14,8 +14,10 @@ export class Order {
   @Column()
   title: string;
   @Column()
+  qty: number;
+  @Column()
   price: number;
 
-  // @Column()
-  // created_at: Date;
+  @Column()
+  created_at: string;
 }

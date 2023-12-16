@@ -14,4 +14,6 @@ export class Notifycation {
   price: number;
   @Column()
   qty: number;
+  @Column()
+  created_at: string;
 }

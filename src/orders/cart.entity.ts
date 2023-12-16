@@ -4,7 +4,6 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 export class Carts {
   @PrimaryGeneratedColumn()
   id: number;
-
   @Column()
   email: string;
   @Column()

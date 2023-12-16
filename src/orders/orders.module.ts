@@ -8,9 +8,14 @@ import { Carts } from './cart.entity';
 import { NotifycationService } from 'src/notifycation/notifycation.service';
 import { NotifycationModule } from 'src/notifycation/notifycation.module';
 import { NotifycationController } from 'src/notifycation/notifycation.controller';
+import { UserModule } from 'src/users/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Order, Carts]), NotifycationModule],
+  imports: [
+    TypeOrmModule.forFeature([Order, Carts]),
+    NotifycationModule,
+    UserModule,
+  ],
   controllers: [OrdersController],
   providers: [OrdersService],
 })

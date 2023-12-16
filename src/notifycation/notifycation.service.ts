@@ -22,7 +22,6 @@ export class NotifycationService {
 
   async findAll() {
     const res = await this.notifycationRepository.find();
-
     return res;
   }
 

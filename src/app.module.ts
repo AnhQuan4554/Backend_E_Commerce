@@ -26,7 +26,7 @@ import { NotifycationService } from './notifycation/notifycation.service';
       port: 3306,
       username: 'root',
       password: '100502',
-      database: 'e_commerce',
+      database: 'app',
       entities: [User, Product, Order, Carts, Notifycation],
       synchronize: true,
     }),

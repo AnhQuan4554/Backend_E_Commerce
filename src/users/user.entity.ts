@@ -6,14 +6,16 @@ export class User {
   id: number;
 
   @Column()
-  firstName: string;
+  name: string;
 
   @Column()
-  lastName: string;
-  @Column()
   email: string;
-  // @Column()
-  // password: string;
+  @Column()
+  password: string;
+  @Column()
+  address: string;
+  @Column()
+  phone: string;
 
   // @OneToMany(type => Order, order => order.user)
   // orders: Order[];

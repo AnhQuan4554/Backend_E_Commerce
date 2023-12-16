@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/user.dto';
+import { UserLogin } from './dto/userLogin.dto';
 @Injectable()
 export class UserService {
   constructor(
@@ -22,8 +25,14 @@ export class UserService {
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<User | null> {
-    return this.usersRepository.findOneBy({ id });
+  async findAddressByEmail(email: string) {
+    const res = this.usersRepository.findOne({ where: { email } });
+
+    return (await res).address;
+  }
+  async findOne(userLogin: UserLogin) {
+    const { email, password } = userLogin;
+    return this.usersRepository.findOneBy({ email, password });
   }
 
   async remove(id: string): Promise<void> {
