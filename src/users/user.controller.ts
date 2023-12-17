@@ -23,7 +23,8 @@ export class UserController {
   ) {}
   @Get('/:email')
   async getUser(@Param('email') email: string) {
-    const user = await this.userService.findAddressByEmail(email);
+    const res = await this.userService.findAddressByEmail(email);
+    return res;
   }
   @Post('check-user')
   async CheckUserLogin(@Body() userLogin: any) {

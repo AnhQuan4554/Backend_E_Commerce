@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable prettier/prettier */
 import {
   Controller,
@@ -22,9 +23,9 @@ export class NotifycationController {
     const res = this.notifycationService.create(createNotifycationDto);
   }
 
-  @Get()
-  findAll() {
-    return this.notifycationService.findAll();
+  @Get('/:email')
+  findAll(@Param('email') email: String) {
+    return this.notifycationService.findAll(email);
   }
 
   @Get(':id')

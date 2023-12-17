@@ -13,9 +13,6 @@ export class UserService {
     private usersRepository: Repository<User>,
   ) {}
 
-  getHello(): string {
-    return 'Hello User!';
-  }
   async creatUser(creatUser: CreateUserDto) {
     const result = await this.usersRepository.save(creatUser);
     console.log('result when creat', result);
@@ -27,7 +24,7 @@ export class UserService {
 
   async findAddressByEmail(email: string) {
     const res = this.usersRepository.findOne({ where: { email } });
-
+    console.log((await res).address);
     return (await res).address;
   }
   async findOne(userLogin: UserLogin) {

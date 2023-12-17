@@ -83,4 +83,9 @@ export class OrdersController {
   async deleteCart(@Param('id') id: number) {
     const res = this.ordersService.deleteCarts(id);
   }
+  @Get('best-seller')
+  async getOrderWithMaxQuantity() {
+    const res = await this.ordersService.getOrderWithMaxQuantity();
+    return res;
+  }
 }

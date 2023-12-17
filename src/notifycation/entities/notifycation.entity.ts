@@ -9,6 +9,8 @@ export class Notifycation {
   @Column()
   title: string;
   @Column()
+  email: string;
+  @Column()
   description: string;
   @Column()
   price: number;

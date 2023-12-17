@@ -40,6 +40,26 @@ export class OrdersService {
 
     return res;
   }
+  async getOrderWithMaxQuantity() {
+    try {
+      const results = await this.OrderRepository.createQueryBuilder('order')
+        .select([
+          'order.title',
+          'SUM(order.qty) as totalQuantity',
+          'MAX(order.image) as image',
+          'MAX(order.description) as description',
+          'MAX(order.price) as price',
+        ])
+        .groupBy('order.title')
+        .orderBy('totalQuantity', 'DESC')
+        .limit(3)
+        .getRawMany();
+
+      return results;
+    } catch (error) {
+      throw error;
+    }
+  }
   async creatOrder(creatOrder: CreateOrderDto) {
     const result = await this.OrderRepository.save(creatOrder);
     // console.log('result when creat', result);
