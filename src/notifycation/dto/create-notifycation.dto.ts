@@ -5,6 +5,8 @@ export class CreateNotifycationDto {
   readonly image: string;
 
   @IsString()
+  readonly email: string;
+  @IsString()
   readonly description: string;
   @IsString()
   readonly title: string;
